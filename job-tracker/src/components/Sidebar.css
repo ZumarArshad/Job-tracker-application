@@ -21,8 +21,12 @@
   margin-bottom: 45px;
 
   font-size: 21px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-text-heading);
+  strong {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
 }
 
 .logo-icon {

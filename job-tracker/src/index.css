@@ -21,6 +21,10 @@
   --color-border-muted: #edf0f4;
 
   /* Status */
+  --color-success: #10b981;
+  --color-success-soft: #d1fae5;
+  --color-warning: #f59e0b;
+  --color-warning-soft: #fef3c7;
   --color-danger: #ef4444;
   --color-danger-soft: #fee2e2;
 

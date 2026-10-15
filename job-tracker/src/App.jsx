@@ -1,7 +1,7 @@
 import { FileText, Send, CalendarDays, CircleX } from "lucide-react";
-import { Dashboard } from "./pages/Dashboard";
-import { Sidebar } from "./components/Sidebar";
-import { StatCard } from "./components/StatCard";
+import { Dashboard } from "./pages/Dashboard.jsx";
+import { Sidebar } from "./components/Sidebar.jsx";
+import { StatCard } from "./components/StatCard.jsx";
 import "./App.css";
 
 function App() {
@@ -12,9 +12,19 @@ function App() {
         <Dashboard />
         <div className="stat-grid">
           <StatCard title="Total Applications" value="5" icon={FileText} />
-          <StatCard title="Applied" value="2" icon={Send} />
-          <StatCard title="Interview" value="2" icon={CalendarDays} />
-          <StatCard title="Rejected" value="1" icon={CircleX} iconColor="danger" />
+          <StatCard title="Applied" value="2" icon={Send} iconColor="success" />
+          <StatCard
+            title="Interview"
+            value="2"
+            icon={CalendarDays}
+            iconColor="warning"
+          />
+          <StatCard
+            title="Rejected"
+            value="1"
+            icon={CircleX}
+            iconColor="danger"
+          />
         </div>
       </main>
     </div>

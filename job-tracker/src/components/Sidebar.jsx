@@ -17,7 +17,7 @@ export function Sidebar() {
           <BriefcaseBusiness size={22} />
         </div>
 
-        <span>JobTrack</span>
+        <span>Job<strong>Track</strong></span>
       </div>
 
       {/* Navigation */}
