@@ -1,32 +1,26 @@
-import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import "./RecentApplications.css";
 import { JobCard } from "./JobCard.jsx";
 
-export function RecentApplications({ applications }) {
-  const [showAll, setShowAll] = useState(false);
-  const visibleApplications = showAll
-    ? applications
-    : applications.slice(0, 4);
-
+export function RecentApplications({ applications, onViewAll }) {
   return (
     <section className="recent-applications" id="applications">
       <div className="section-header">
         <h2>Recent Applications</h2>
 
-        {applications.length > 4 && (
-          <button
-            type="button"
-            className="view-all-applications"
-            aria-expanded={showAll}
-            onClick={() => setShowAll((current) => !current)}
-          >
-            {showAll ? "Show recent" : "View all"} <ArrowRight size={16} />
-          </button>
-        )}
+        <a
+          href="/applications"
+          className="view-all-applications"
+          onClick={(event) => {
+            event.preventDefault();
+            onViewAll();
+          }}
+        >
+          View all <ArrowRight size={16} />
+        </a>
       </div>
       <div className="job-cards-container">
-        {visibleApplications.map((application) => (
+        {applications.slice(0, 4).map((application) => (
           <JobCard
             key={application.id}
             title={application.title}

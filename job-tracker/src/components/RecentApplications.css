@@ -23,7 +23,6 @@
   font-weight: 500;
   font-family: inherit;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .recent-applications .view-all-applications svg {
@@ -38,6 +37,26 @@
   box-shadow: 0 8px 20px rgb(23 32 51 / 7%);
 }
 
+.all-applications-header {
+  margin-bottom: 24px;
+}
+
+.all-applications-header h1 {
+  font-size: 24px;
+}
+
+.all-applications-header p {
+  margin-top: 6px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.empty-applications {
+  padding: 24px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
 @media (max-width: 700px) {
   .recent-applications .section-header {
     margin: 24px 0 12px;
@@ -49,6 +68,18 @@
 
   .recent-applications .view-all-applications {
     font-size: 12px;
+  }
+
+  .all-applications-header {
+    margin-bottom: 18px;
+  }
+
+  .all-applications-header h1 {
+    font-size: 21px;
+  }
+
+  .all-applications-header p {
+    font-size: 13px;
   }
 }
 

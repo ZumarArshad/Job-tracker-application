@@ -1,6 +1,7 @@
 import { FileText, Send, CalendarDays, CircleX } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dashboard } from "./pages/Dashboard.jsx";
+import { ApplicationsPage } from "./pages/ApplicationsPage.jsx";
 import { Sidebar } from "./components/Sidebar.jsx";
 import { RecentApplications } from "./components/RecentApplications.jsx";
 import { StatCard } from "./components/StatCard.jsx";
@@ -39,6 +40,9 @@ const initialApplications = [
 
 function App() {
   const [applications, setApplications] = useState(initialApplications);
+  const [currentPage, setCurrentPage] = useState(() =>
+    window.location.pathname === "/applications" ? "applications" : "dashboard",
+  );
 
   const addApplication = (application) => {
     setApplications((currentApplications) => [
@@ -57,37 +61,70 @@ function App() {
     (application) => application.status === "Rejected",
   ).length;
 
+  const navigateTo = (path) => {
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, "", path);
+    }
+    setCurrentPage(path === "/applications" ? "applications" : "dashboard");
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(
+        window.location.pathname === "/applications"
+          ? "applications"
+          : "dashboard",
+      );
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
   return (
     <div className="app">
-      <Sidebar onAddApplication={addApplication} />
+      <Sidebar
+        onAddApplication={addApplication}
+        currentPage={currentPage}
+        onNavigate={navigateTo}
+      />
       <main className="app-main">
-        <Dashboard />
-        <div className="stat-grid">
-          <StatCard
-            title="Total Applications"
-            value={applications.length}
-            icon={FileText}
-          />
-          <StatCard
-            title="Applied"
-            value={appliedCount}
-            icon={Send}
-            iconColor="success"
-          />
-          <StatCard
-            title="Interview"
-            value={interviewCount}
-            icon={CalendarDays}
-            iconColor="warning"
-          />
-          <StatCard
-            title="Rejected"
-            value={rejectedCount}
-            icon={CircleX}
-            iconColor="danger"
-          />
-        </div>
-        <RecentApplications applications={applications} />
+        {currentPage === "applications" ? (
+          <ApplicationsPage applications={applications} />
+        ) : (
+          <>
+            <Dashboard />
+            <div className="stat-grid">
+              <StatCard
+                title="Total Applications"
+                value={applications.length}
+                icon={FileText}
+              />
+              <StatCard
+                title="Applied"
+                value={appliedCount}
+                icon={Send}
+                iconColor="success"
+              />
+              <StatCard
+                title="Interview"
+                value={interviewCount}
+                icon={CalendarDays}
+                iconColor="warning"
+              />
+              <StatCard
+                title="Rejected"
+                value={rejectedCount}
+                icon={CircleX}
+                iconColor="danger"
+              />
+            </div>
+            <RecentApplications
+              applications={applications}
+              onViewAll={() => navigateTo("/applications")}
+            />
+          </>
+        )}
       </main>
     </div>
   );

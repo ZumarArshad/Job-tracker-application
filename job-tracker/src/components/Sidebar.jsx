@@ -10,7 +10,7 @@ import { useState } from "react";
 import { AddApplication } from "../pages/AddApplication.jsx";
 import "./Sidebar.css";
 
-export function Sidebar({ onAddApplication }) {
+export function Sidebar({ onAddApplication, currentPage, onNavigate }) {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
 
   return (
@@ -29,12 +29,26 @@ export function Sidebar({ onAddApplication }) {
         <nav className="sidebar-nav">
           <p className="nav-title">MENU</p>
 
-          <a href="#" className="nav-link active">
+          <a
+            href="/"
+            className={`nav-link${currentPage === "dashboard" ? " active" : ""}`}
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("/");
+            }}
+          >
             <LayoutDashboard size={19} />
             <span>Dashboard</span>
           </a>
 
-          <a href="#applications" className="nav-link">
+          <a
+            href="/applications"
+            className={`nav-link${currentPage === "applications" ? " active" : ""}`}
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("/applications");
+            }}
+          >
             <FileText size={19} />
             <span>Applications</span>
           </a>
