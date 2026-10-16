@@ -45,7 +45,12 @@
 html,
 body,
 #root {
+  width: 100%;
   min-height: 100%;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 body {
@@ -71,4 +76,10 @@ p {
 
 button {
   font-family: inherit;
+}
+
+@media (max-width: 700px) {
+  body {
+    font-size: 14px;
+  }
 }

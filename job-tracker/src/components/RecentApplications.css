@@ -1,20 +1,58 @@
-.recent-applications{
-    .section-header{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 30px 0 20px 0;
-        a{
-            font-size: 14px;
-            color: var(--color-primary);
-            font-weight: 500;
-            text-decoration: none;
-            svg{
-                margin-bottom: -3px;
-            }
-        }
-    }
-    .job-cards-container{
-            box-shadow: 4px 8px 20px 0px #dddddd;
-    }
+.recent-applications .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 30px 0 20px;
+}
+
+.recent-applications .section-header h2 {
+  font-size: 18px;
+}
+
+.recent-applications .section-header a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.recent-applications .section-header a svg {
+  margin-bottom: -2px;
+}
+
+.job-cards-container {
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 20px rgb(23 32 51 / 7%);
+}
+
+@media (max-width: 700px) {
+  .recent-applications .section-header {
+    margin: 24px 0 12px;
+  }
+
+  .recent-applications .section-header h2 {
+    font-size: 15px;
+  }
+
+  .recent-applications .section-header a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .recent-applications .section-header {
+    gap: 8px;
+  }
+
+  .recent-applications .section-header h2 {
+    font-size: 14px;
+  }
 }
