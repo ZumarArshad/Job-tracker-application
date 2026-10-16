@@ -1,0 +1,94 @@
+.recent-applications .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 30px 0 20px;
+}
+
+.recent-applications .section-header h2 {
+  font-size: 18px;
+}
+
+.recent-applications .view-all-applications {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.recent-applications .view-all-applications svg {
+  margin-bottom: -2px;
+}
+
+.job-cards-container {
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 20px rgb(23 32 51 / 7%);
+}
+
+.all-applications-header {
+  margin-bottom: 24px;
+}
+
+.all-applications-header h1 {
+  font-size: 24px;
+}
+
+.all-applications-header p {
+  margin-top: 6px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.empty-applications {
+  padding: 24px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .recent-applications .section-header {
+    margin: 24px 0 12px;
+  }
+
+  .recent-applications .section-header h2 {
+    font-size: 15px;
+  }
+
+  .recent-applications .view-all-applications {
+    font-size: 12px;
+  }
+
+  .all-applications-header {
+    margin-bottom: 18px;
+  }
+
+  .all-applications-header h1 {
+    font-size: 21px;
+  }
+
+  .all-applications-header p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .recent-applications .section-header {
+    gap: 8px;
+  }
+
+  .recent-applications .section-header h2 {
+    font-size: 14px;
+  }
+}
