@@ -1,0 +1,147 @@
+/* Individual Job Card */
+
+.job-card {
+display: grid;
+grid-template-columns: 52px minmax(0, 1fr) 110px 120px 24px;
+align-items: center;
+gap: 16px;
+padding: 20px 24px;
+background: var(--color-surface);
+transition: background-color 0.2s ease;
+}
+
+.job-card + .job-card {
+border-top: 1px solid var(--color-border);
+}
+
+.job-card {
+background-color: var(--color-surface);
+}
+
+/* Company Logo Placeholder */
+
+.company-logo {
+width: 48px;
+height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 12px;
+background: var(--color-primary-soft);
+color: var(--color-primary);
+font-size: 22px;
+font-weight: 700;
+}
+
+/* Job Information */
+
+.job-card-info {
+min-width: 0;
+}
+
+.job-card-info h3 {
+margin: 0 0 6px;
+color: var(--color-text-heading);
+font-size: 15px;
+font-weight: 600;
+overflow-wrap: anywhere;
+}
+
+.job-card-info p {
+margin: 0;
+color: var(--color-text-muted);
+font-size: 13px;
+}
+
+/* Status Badges */
+
+.job-status {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 6px 12px;
+border-radius: 20px;
+font-size: 12px;
+font-weight: 600;
+white-space: nowrap;
+}
+
+.job-status.applied {
+background: var(--color-primary-soft);
+color: var(--color-primary);
+}
+
+.job-status.interview {
+background: var(--color-warning-soft);
+color: var(--color-warning);
+}
+
+.job-status.rejected {
+background: var(--color-danger-soft);
+color: var(--color-danger);
+}
+
+.job-status.offer {
+background: var(--color-success-soft);
+color: var(--color-success);
+}
+
+.job-status.withdrawn {
+background: var(--color-neutral-soft);
+color: var(--color-neutral);
+}
+
+/* Application Date */
+
+.application-date {
+color: var(--color-text-muted);
+font-size: 13px;
+white-space: nowrap;
+}
+
+/* Details Link */
+
+.job-card-action {
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--color-icon-muted);
+text-decoration: none;
+border-radius: 6px;
+}
+
+.job-card-action {
+color: var(--color-primary);
+}
+
+/* Responsive Layout */
+
+@media (max-width: 700px) {
+.job-card {
+grid-template-columns: 44px minmax(0, 1fr) 20px;
+gap: 12px;
+padding: 16px;
+}
+
+.company-logo {
+width: 42px;
+height: 42px;
+font-size: 19px;
+}
+
+.job-card-status {
+grid-column: 2;
+grid-row: 2;
+}
+
+.application-date {
+grid-column: 2;
+grid-row: 3;
+white-space: normal;
+}
+
+.job-card-action {
+grid-column: 3;
+grid-row: 1;
+}
+}

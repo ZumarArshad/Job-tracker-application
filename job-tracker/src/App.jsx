@@ -1,6 +1,7 @@
 import { FileText, Send, CalendarDays, CircleX } from "lucide-react";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { Sidebar } from "./components/Sidebar.jsx";
+import { RecentApplications } from "./components/RecentApplications.jsx";
 import { StatCard } from "./components/StatCard.jsx";
 import "./App.css";
 
@@ -26,6 +27,7 @@ function App() {
             iconColor="danger"
           />
         </div>
+        <RecentApplications />
       </main>
     </div>
   );
