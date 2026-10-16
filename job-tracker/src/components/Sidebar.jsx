@@ -64,7 +64,14 @@ export function Sidebar({ onAddApplication, currentPage, onNavigate }) {
 
           <p className="nav-title">GENERAL</p>
 
-          <a href="#" className="nav-link">
+          <a
+            href="/settings"
+            className={`nav-link${currentPage === "settings" ? " active" : ""}`}
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("/settings");
+            }}
+          >
             <Settings size={19} />
             <span>Settings</span>
           </a>

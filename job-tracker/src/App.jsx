@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { ApplicationsPage } from "./pages/ApplicationsPage.jsx";
 import { ApplicationDetails } from "./pages/ApplicationDetails.jsx";
+import { Setting } from "./pages/Setting.jsx";
 import { Sidebar } from "./components/Sidebar.jsx";
 import { RecentApplications } from "./components/RecentApplications.jsx";
 import { StatCard } from "./components/StatCard.jsx";
@@ -45,7 +46,9 @@ function App() {
     () => window.location.pathname,
   );
   const currentPage =
-    currentPath === "/applications"
+    currentPath === "/settings"
+      ? "settings"
+      : currentPath === "/applications"
       ? "applications"
       : currentPath.startsWith("/applications/")
         ? "details"
@@ -116,6 +119,8 @@ function App() {
             onBack={() => navigateTo("/applications")}
             onUpdate={updateApplication}
           />
+        ) : currentPage === "settings" ? (
+          <Setting />
         ) : currentPage === "applications" ? (
           <ApplicationsPage
             applications={applications}
