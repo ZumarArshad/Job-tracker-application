@@ -10,18 +10,23 @@
   font-size: 18px;
 }
 
-.recent-applications .section-header a {
+.recent-applications .view-all-applications {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--color-primary);
   font-size: 14px;
   font-weight: 500;
+  font-family: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
-.recent-applications .section-header a svg {
+.recent-applications .view-all-applications svg {
   margin-bottom: -2px;
 }
 
@@ -42,7 +47,7 @@
     font-size: 15px;
   }
 
-  .recent-applications .section-header a {
+  .recent-applications .view-all-applications {
     font-size: 12px;
   }
 }
