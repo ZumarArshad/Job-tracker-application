@@ -2,6 +2,7 @@ import { FileText, Send, CalendarDays, CircleX } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Dashboard } from "./pages/Dashboard.jsx";
 import { ApplicationsPage } from "./pages/ApplicationsPage.jsx";
+import { ApplicationDetails } from "./pages/ApplicationDetails.jsx";
 import { Sidebar } from "./components/Sidebar.jsx";
 import { RecentApplications } from "./components/RecentApplications.jsx";
 import { StatCard } from "./components/StatCard.jsx";
@@ -40,8 +41,21 @@ const initialApplications = [
 
 function App() {
   const [applications, setApplications] = useState(initialApplications);
-  const [currentPage, setCurrentPage] = useState(() =>
-    window.location.pathname === "/applications" ? "applications" : "dashboard",
+  const [currentPath, setCurrentPath] = useState(
+    () => window.location.pathname,
+  );
+  const currentPage =
+    currentPath === "/applications"
+      ? "applications"
+      : currentPath.startsWith("/applications/")
+        ? "details"
+        : "dashboard";
+  const selectedApplicationId =
+    currentPage === "details"
+      ? decodeURIComponent(currentPath.slice("/applications/".length))
+      : null;
+  const selectedApplication = applications.find(
+    (application) => String(application.id) === selectedApplicationId,
   );
 
   const addApplication = (application) => {
@@ -49,6 +63,16 @@ function App() {
       application,
       ...currentApplications,
     ]);
+  };
+
+  const updateApplication = (updatedApplication) => {
+    setApplications((currentApplications) =>
+      currentApplications.map((application) =>
+        application.id === updatedApplication.id
+          ? updatedApplication
+          : application,
+      ),
+    );
   };
 
   const appliedCount = applications.filter(
@@ -65,16 +89,12 @@ function App() {
     if (window.location.pathname !== path) {
       window.history.pushState({}, "", path);
     }
-    setCurrentPage(path === "/applications" ? "applications" : "dashboard");
+    setCurrentPath(path);
   };
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPage(
-        window.location.pathname === "/applications"
-          ? "applications"
-          : "dashboard",
-      );
+      setCurrentPath(window.location.pathname);
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -89,8 +109,20 @@ function App() {
         onNavigate={navigateTo}
       />
       <main className="app-main">
-        {currentPage === "applications" ? (
-          <ApplicationsPage applications={applications} />
+        {currentPage === "details" && selectedApplication ? (
+          <ApplicationDetails
+            key={selectedApplication.id}
+            application={selectedApplication}
+            onBack={() => navigateTo("/applications")}
+            onUpdate={updateApplication}
+          />
+        ) : currentPage === "applications" ? (
+          <ApplicationsPage
+            applications={applications}
+            onViewDetails={(id) =>
+              navigateTo(`/applications/${encodeURIComponent(id)}`)
+            }
+          />
         ) : (
           <>
             <Dashboard />
@@ -122,6 +154,9 @@ function App() {
             <RecentApplications
               applications={applications}
               onViewAll={() => navigateTo("/applications")}
+              onViewDetails={(id) =>
+                navigateTo(`/applications/${encodeURIComponent(id)}`)
+              }
             />
           </>
         )}

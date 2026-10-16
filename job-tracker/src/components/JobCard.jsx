@@ -1,6 +1,14 @@
 import { ChevronRight } from "lucide-react";
 import "./JobCard.css";
-export function JobCard({ title, company, status, dateApplied }) {
+
+export function JobCard({
+  id,
+  title,
+  company,
+  status,
+  dateApplied,
+  onViewDetails,
+}) {
   const statusClass = status.toLowerCase().replace(/\s+/g, "-");
 
   return (
@@ -25,9 +33,13 @@ export function JobCard({ title, company, status, dateApplied }) {
       </time>
 
       <a
-        href="#"
+        href={`/applications/${encodeURIComponent(id)}`}
         className="job-card-action"
         aria-label={`View ${title} at ${company}`}
+        onClick={(event) => {
+          event.preventDefault();
+          onViewDetails(id);
+        }}
       >
         <ChevronRight size={20} />
       </a>

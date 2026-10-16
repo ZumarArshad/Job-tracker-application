@@ -43,7 +43,7 @@ export function Sidebar({ onAddApplication, currentPage, onNavigate }) {
 
           <a
             href="/applications"
-            className={`nav-link${currentPage === "applications" ? " active" : ""}`}
+            className={`nav-link${["applications", "details"].includes(currentPage) ? " active" : ""}`}
             onClick={(event) => {
               event.preventDefault();
               onNavigate("/applications");

@@ -1,0 +1,659 @@
+
+.jt-app {
+  --jt-blue: #2563eb;
+  --jt-text: #24334d;
+  --jt-muted: #8491a7;
+  --jt-border: #e8edf5;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  background: transparent;
+  color: var(--jt-text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 14px;
+}
+
+.jt-app * {
+  box-sizing: border-box;
+}
+
+.jt-sidebar {
+  width: 220px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 20px;
+  background: #fff;
+  border-right: 1px solid var(--jt-border);
+}
+
+.jt-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 10px 34px;
+  color: #1e3151;
+  font-size: 19px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.jt-brand-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  color: #fff;
+  background: var(--jt-blue);
+}
+
+.jt-navigation {
+  display: grid;
+  gap: 7px;
+}
+
+.jt-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 11px;
+  color: #687890;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.jt-nav-link:hover,
+.jt-nav-link.active {
+  color: var(--jt-blue);
+  background: #eaf1ff;
+}
+
+.jt-sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding: 12px 4px 0;
+}
+
+.jt-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+  background: #7185a6;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.jt-sidebar-profile strong,
+.jt-sidebar-profile span {
+  display: block;
+  font-size: 11px;
+}
+
+.jt-sidebar-profile strong {
+  margin-bottom: 5px;
+}
+
+.jt-sidebar-profile span {
+  color: var(--jt-muted);
+}
+
+.jt-main {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+.jt-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  color: #5c7193;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.jt-back-link:hover {
+  color: var(--jt-blue);
+}
+
+.jt-top-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px 90px;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.jt-job-summary,
+.jt-status-card,
+.jt-edit-card,
+.jt-panel {
+  background: #fff;
+  border: 1px solid var(--jt-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(26, 47, 84, 0.025);
+}
+
+.jt-job-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+  padding: 22px;
+}
+
+.jt-company-logo {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: var(--jt-blue);
+  color: #fff;
+  font-size: 27px;
+  font-weight: 750;
+}
+
+.jt-job-heading {
+  min-width: 0;
+}
+
+.jt-job-heading h1 {
+  margin: 0 0 5px;
+  color: #172844;
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.jt-job-heading > p {
+  margin: 0 0 15px;
+  color: #687890;
+  font-size: 14px;
+}
+
+.jt-job-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #8491a7;
+  font-size: 11px;
+  min-width: 0;
+}
+
+.jt-job-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.jt-status-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 15px;
+}
+
+.jt-status-card label {
+  color: #738199;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.jt-status-select {
+  max-width: 100%;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  outline-offset: 3px;
+}
+
+.status-interview {
+  color: #a8750b;
+  background: #fff0b7;
+}
+
+.status-applied {
+  color: #245dc4;
+  background: #e6efff;
+}
+
+.status-offer {
+  color: #16804a;
+  background: #dcfce7;
+}
+
+.status-rejected {
+  color: #be3345;
+  background: #ffe4e6;
+}
+
+.jt-edit-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 22px 10px;
+}
+
+.jt-edit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border: 1px solid #e2e9f3;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--jt-blue);
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.jt-edit-button:hover {
+  background: #f4f7ff;
+}
+
+.jt-save-button {
+  background: var(--jt-blue);
+  border-color: var(--jt-blue);
+  color: #fff;
+}
+
+.jt-tabs {
+  display: flex;
+  gap: 26px;
+  border-bottom: 1px solid var(--jt-border);
+  margin-bottom: 0;
+}
+
+.jt-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 3px 13px;
+  margin-bottom: -1px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #738199;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.jt-tab svg {
+  display: none;
+}
+
+.jt-tab.selected {
+  border-bottom-color: var(--jt-blue);
+  color: var(--jt-blue);
+  font-weight: 700;
+}
+
+.jt-details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+  gap: 0;
+}
+
+.jt-panel {
+  min-width: 0;
+  padding: 24px;
+  border-radius: 0 0 12px 12px;
+}
+
+.jt-description-panel {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.jt-info-panel {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-left: 0;
+}
+
+.jt-panel h3 {
+  margin: 0 0 18px;
+  color: #263750;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.jt-description {
+  margin: 0;
+  color: #718098;
+  font-size: 13px;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+
+.jt-skills-title {
+  margin-top: 28px !important;
+  margin-bottom: 16px !important;
+}
+
+.jt-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.jt-skill {
+  padding: 6px 11px;
+  border: 1px solid #e1e8f2;
+  border-radius: 20px;
+  background: #fbfcfe;
+  color: #60718b;
+  font-size: 11px;
+}
+
+.jt-info-panel h3 {
+  margin-bottom: 22px;
+}
+
+.jt-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.jt-info-row:last-child {
+  margin-bottom: 0;
+}
+
+.jt-info-row > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #8595af;
+}
+
+.jt-info-row > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.jt-info-row span {
+  color: #8290a6;
+  font-size: 12px;
+}
+
+.jt-info-row strong,
+.jt-info-row a {
+  color: #536580;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.jt-info-row a {
+  color: var(--jt-blue);
+  text-decoration: none;
+}
+
+.jt-notes-panel,
+.jt-activity-panel {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.jt-muted {
+  color: var(--jt-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.jt-notes-input {
+  display: block;
+  width: 100%;
+  margin: 18px 0 12px;
+  padding: 14px;
+  border: 1px solid #dce4ef;
+  border-radius: 9px;
+  color: var(--jt-text);
+  background: #fff;
+  font: inherit;
+  resize: vertical;
+  outline-color: var(--jt-blue);
+}
+
+.jt-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 17px 0;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.jt-activity-dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--jt-blue);
+}
+
+.jt-activity-item strong {
+  font-size: 13px;
+}
+
+.jt-activity-item p {
+  margin: 7px 0 0;
+  color: var(--jt-muted);
+  font-size: 12px;
+}
+
+.jt-edit-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #dce4ef;
+  border-radius: 7px;
+  color: var(--jt-text);
+  background: #fff;
+  font: inherit;
+}
+
+.jt-title-input {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.jt-description-input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+@media (min-width: 1400px) {
+  .jt-top-grid {
+    grid-template-columns: minmax(0, 1fr) 175px 100px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .jt-top-grid {
+    grid-template-columns: minmax(0, 1fr) 140px 80px;
+  }
+
+  .jt-job-summary {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .jt-panel {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 850px) {
+  .jt-top-grid {
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .jt-job-summary {
+    grid-column: 1 / -1;
+  }
+
+  .jt-status-card {
+    padding: 14px;
+  }
+
+  .jt-edit-card {
+    align-items: center;
+    justify-content: flex-end;
+    padding: 12px;
+  }
+
+  .jt-details-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .jt-info-panel {
+    border-left: 1px solid var(--jt-border);
+    border-top: 0;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .jt-description-panel {
+    border-radius: 12px 12px 0 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .jt-back-link {
+    margin-bottom: 16px;
+  }
+
+  .jt-top-grid {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .jt-job-summary {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .jt-company-logo {
+    width: 42px;
+    height: 42px;
+    font-size: 23px;
+  }
+
+  .jt-job-heading h1 {
+    font-size: 18px;
+  }
+
+  .jt-job-heading > p {
+    margin-bottom: 10px;
+  }
+
+  .jt-job-meta {
+    gap: 8px 12px;
+  }
+
+  .jt-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .jt-tab {
+    justify-content: center;
+    gap: 5px;
+    min-width: 0;
+    padding: 0 2px 11px;
+    font-size: 12px;
+  }
+
+  .jt-tab svg {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .jt-panel {
+    padding: 17px;
+  }
+
+  .jt-info-row {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .jt-notes-input {
+    min-height: 140px;
+  }
+}
+
+@media (max-width: 380px) {
+  .jt-top-grid {
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .jt-job-summary {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .jt-company-logo {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .jt-job-heading h1 {
+    font-size: 16px;
+  }
+
+  .jt-status-card {
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .jt-status-select {
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  .jt-edit-card {
+    padding: 8px;
+  }
+
+  .jt-edit-button {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .jt-panel {
+    padding: 14px;
+  }
+
+  .jt-tab {
+    gap: 4px;
+    font-size: 11px;
+  }
+}

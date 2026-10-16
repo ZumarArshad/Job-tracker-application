@@ -1,6 +1,6 @@
 import { JobCard } from "../components/JobCard.jsx";
 
-export function ApplicationsPage({ applications }) {
+export function ApplicationsPage({ applications, onViewDetails }) {
   return (
     <section className="all-applications-page">
       <header className="all-applications-header">
@@ -14,10 +14,12 @@ export function ApplicationsPage({ applications }) {
         {applications.map((application) => (
           <JobCard
             key={application.id}
+            id={application.id}
             title={application.title}
             company={application.company}
             status={application.status}
             dateApplied={application.dateApplied}
+            onViewDetails={onViewDetails}
           />
         ))}
         {applications.length === 0 && (
